@@ -1,0 +1,73 @@
+<LoginScreen>
+    MDScreen:
+        id: login_screen
+        md_bg_color: 0.8, 0.8, 0.8, 1  # Cor de fundo temática
+        BoxLayout:
+            orientation: 'vertical'
+            padding: "10dp"
+            spacing: "10dp"
+            size_hint: None, None
+            size: dp(400), dp(600)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDLabel:
+                text: "Login"
+                halign: 'center'
+                valign:'middle'
+                font_style: 'H4'
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                spacing: '10dp'
+
+                MDTextField:
+                    id: login_field
+                    hint_text: "Login"
+                    mode: "fill"
+
+                MDTextField:
+                    id: senha_field
+                    hint_text: "Senha"
+                    mode: "fill"
+                    password: True
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "10dp"
+                pos_hint: {'center_x': 0.5}
+
+                MDFlatButton:
+                    text: "Esqueceu a senha?"
+                    theme_text_color: "Custom"
+                    text_color: app.theme_cls.primary_color
+                    on_release: root.show_alert_dialog()
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(150)
+
+                AnchorLayout:
+                    anchor_x: 'right'
+                    anchor_y: 'bottom'
+                    MDFlatButton:
+                        text: "Cadastrar"
+                        theme_text_color: "Custom"
+                        text_color: app.theme_cls.primary_color
+                        on_release: app.goto_register()
+
+            MDRaisedButton:
+                id: login_button
+                text: "Login"
+                pos_hint: {'center_x': 0.5}
+                on_release: root.login()
+                
+            ScrollView:
+                MDLabel:
+                    id: status_label
+                    text: ""
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'  
+                    align: 'center'

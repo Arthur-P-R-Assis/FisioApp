@@ -1,0 +1,680 @@
+<FichaScreen>
+    canvas.before:
+        Color:
+            rgba: 0.8, 0.8, 0.8, 1  # Define a cor de fundo
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ScrollView:
+        do_scroll_x: False
+
+        GridLayout:
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: dp(0.5)
+            padding: dp(10)
+
+            AnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'top'
+                spacing: dp(300)
+                size_hint_y: None
+                height: dp(50)
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    spacing: dp(300)
+                    
+                    Button:
+                        text: 'Voltar'
+                        background_color: 0, 0, 0, 0  # Configura o fundo para ser transparente
+                        color: 0.3, 0.3, 0.3, 1  # Configura a cor do texto para preto
+                        font_size: 15  # Ajusta o tamanho da fonte para o "X" maior
+                        size_hint: None, None
+                        size: self.texture_size
+                        pos_hint: {'center_x': 0.4, 'center_y': 0.8}
+                        canvas.before:
+                            Color:
+                                rgba: 0.3, 0.3, 0.3, 1  # Define a cor do sublinhado
+                            Line:
+                                points: self.x, self.y - 5, self.x + self.width, self.y - 5  # Desenha o sublinhado
+                                width: 1  # Define a largura do sublinhado
+                        on_release: app.goto_inicial()
+
+                    Label:
+                        text: 'Ficha Técnica'
+                        color: 0.1, 0.1, 0.1, 1
+                        font_size: 24
+                        size_hint: None, None
+                        size: self.texture_size
+                        pos_hint: {'center_y': 0.5}
+
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(40)
+                orientation: 'horizontal'
+
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+
+                Label:
+                    text: 'Nome:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(70)
+
+                Label:
+                    id: label_nome
+                    text:""
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: self.texture_size[0] + dp(10)
+                    text_size: None, None  
+                    size: self.texture_size  
+                    halign: 'left'
+
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(40)
+                orientation: 'horizontal'
+
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+
+                Label:
+                    text: 'Endereço:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(90)
+
+                Label:
+                    id: endereco
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: self.texture_size[0] + dp(10)  # Adiciona um pequeno espaço extra para garantir que o texto não seja cortado
+                    text_size: None, None  # Desabilita o ajuste automático de tamanho de texto
+                    size: self.texture_size  # Define o tamanho do Label com base no tamanho do texto
+                    halign: 'left'  
+            BoxLayout:
+                size_hint_y: None
+                height: dp(40)
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    text: 'Contato:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(80)
+                Label:
+                    id: contato
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: self.texture_size[0] + dp(10)  # Adiciona um pequeno espaço extra para garantir que o texto não seja cortado
+                    text_size: None, None  # Desabilita o ajuste automático de tamanho de texto
+                    size: self.texture_size  # Define o tamanho do Label com base no tamanho do texto
+                    halign: 'left'  
+            BoxLayout:
+                size_hint_y: None
+                height: dp(40)
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    text: 'Data de Nascimento:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(160)
+                Label:
+                    id: nascimento
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: self.texture_size[0] + dp(10)  # Adiciona 
+                    text_size: None, None  # Desabilita o ajuste auto
+                    size: self.texture_size  # Define o tamanho do La
+                    halign: 'left'       
+            
+            BoxLayout:
+                size_hint_y: None
+                height: dp(40)
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    text: 'Data de Avaliação:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(140)
+                Label:
+                    id:data
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: self.texture_size[0] + dp(10)  # Adiciona 
+                    text_size: None, None  # Desabilita o ajuste auto
+                    size: self.texture_size  # Define o tamanho do La
+                    halign: 'left'       
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(40)
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    text: 'Fisioterapeuta (graduandas):'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(210)
+                Label:
+                    id: fisioterapia
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: self.texture_size[0] + dp(10)  # Adiciona 
+                    text_size: None, None  # Desabilita o ajuste auto
+                    size: self.texture_size  # Define o tamanho do La
+                    halign: 'left'  
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(40)
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    text: 'Campo de estágio:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(140)
+                Label:
+                    id: campo
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: self.texture_size[0] + dp(10)  # Adiciona 
+                    text_size: None, None  # Desabilita o ajuste auto
+                    size: self.texture_size  # Define o tamanho do La
+                    halign: 'left'    
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(40)
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    text: 'Condição de Saúde:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(160)
+                Label:
+                    id: condicao
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: self.texture_size[0] + dp(10)  # Adiciona 
+                    text_size: None, None  # Desabilita o ajuste auto
+                    size: self.texture_size  # Define o tamanho do La
+                    halign: 'left'
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                Label:
+                    text: 'QUEIXA PRINCIPAL:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(200)
+                    height: dp(40)  # Ajusta a altura do Label para corresponder ao retângulo
+                    text_size: self.size
+                    padding: (10, 5, 10, 10)
+             
+            BoxLayout:
+                size_hint_y: None
+                height: dp(100)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    id: queixa
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: self.parent.height  # Ajusta a altura do Label para corresponder ao retângulo
+                    width: self.parent.width - dp(130)  # Ajusta a largura do Label para corresponder ao restante do re
+                    text_size: self.size  # Ajusta o tamanho do texto para caber dentro do retângulo
+                    valign: 'middle'  # Alinha verticalmente o texto ao centro
+                    padding: (10, 10, 5, 5)
+            
+            
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                Label:
+                    text: 'FATORES PESSOAIS:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(200)
+                    height: dp(40)  # Ajusta a altura do Label para corresponder ao retângulo
+                    text_size: self.size
+                    padding: (10, 5, 10, 10)
+            
+
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(240)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    id: fatoresp
+                    text: " "
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: self.parent.height  # Ajusta a altura do Label para corresponder ao retângulo
+                    width: self.parent.width - dp(130)  # Ajusta a largura do Label para corresponder ao restante do re
+                    text_size: self.size  # Ajusta o tamanho do texto para caber dentro do retângulo
+                    valign: 'middle'  # Alinha verticalmente o texto ao centro
+                    padding: (10, 10, 5, 5)
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                Label:
+                    text: 'FATORES AMBIENTAIS:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(200)
+                    height: dp(40)  # Ajusta a altura do Label para corresponder ao retângulo
+                    text_size: self.size
+                    padding: (10, 5, 10, 10)
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(240)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    id: fatoresa
+                    text: ""
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: self.parent.height  # Ajusta a altura do Label para corresponder ao retângulo
+                    width: self.parent.width - dp(130)  # Ajusta a largura do Label para corresponder ao restante do re
+                    text_size: self.size  # Ajusta o tamanho do texto para caber dentro do retângulo
+                    valign: 'middle'  # Alinha verticalmente o texto ao centro
+                    padding: (10, 10, 5, 5)
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                Label:
+                    text: 'LIMITAÇÕES E RESTRIÇÕES:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(200)
+                    height: dp(40)  # Ajusta a altura do Label para corresponder ao retângulo
+                    text_size: self.size
+                    padding: (10, 5, 10, 10)
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(100)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    id: limitacoes
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: self.parent.height  # Ajusta a altura do Label para corresponder ao retângulo
+                    width: self.parent.width - dp(130)  # Ajusta a largura do Label para corresponder ao res
+                    text_size: self.size  # Ajusta o tamanho do texto para caber dentro do retângulo
+                    valign: 'middle'  # Alinha verticalmente o texto ao centro
+                    padding: (10, 10, 5, 5)
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                Label:
+                    text: 'DEFICIÊNCIAS:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(200)
+                    height: dp(40)  # Ajusta a altura do Label para corresponder ao retângulo
+                    text_size: self.size
+                    padding: (10, 5, 10, 10)
+            BoxLayout:
+                size_hint_y: None
+                height: dp(140)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    id: deficiencias
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: self.parent.height  # Ajusta a altura do Label para corresponder ao retângulo
+                    width: self.parent.width - dp(130)  # Ajusta a largura do Label para corresponder ao res
+                    text_size: self.size  # Ajusta o tamanho do texto para caber dentro do retângulo
+                    valign: 'middle'  # Alinha verticalmente o texto ao centro
+                    padding: (10, 10, 5, 5)
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                Label:
+                    text: 'DIAGNÓSTICO FISIOTERAPÊUTICO:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(400)
+                    height: dp(40)  # Ajusta a altura do Label para corresponder ao retângulo
+                    text_size: self.size
+                    padding: (10, 5, 10, 10)
+            BoxLayout:
+                size_hint_y: None
+                height: dp(350)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    id:diagnostico
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: self.parent.height  # Ajusta a altura do Label para corresponder ao retângulo
+                    width: self.parent.width - dp(130)  # Ajusta a largura do Label para corresponder ao res
+                    text_size: self.size  # Ajusta o tamanho do texto para caber dentro do retângulo
+                    valign: 'middle'  # Alinha verticalmente o texto ao centro
+                    padding: (10, 10, 5, 5)
+            
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                Label:
+                    text: 'OBJETIVOS FISIOTERAPÊUTICOS:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(400)
+                    height: dp(40)  # Ajusta a altura do Label para corresponder ao retângulo
+                    text_size: self.size
+                    padding: (10, 5, 10, 10)
+            BoxLayout:
+                size_hint_y: None
+                height: dp(350)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    id: objetivos
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: self.parent.height  # Ajusta a altura do Label para corresponder ao retângulo
+                    width: self.parent.width - dp(130)  # Ajusta a largura do Label para corresponder ao res
+                    text_size: self.size  # Ajusta o tamanho do texto para caber dentro do retângulo
+                    valign: 'middle'  # Alinha verticalmente o texto ao centro
+                    padding: (10, 10, 5, 5)
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                Label:
+                    text: 'CONDUTAS FISIOTERAPÊUTICAS:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(400)
+                    height: dp(40)  # Ajusta a altura do Label para corresponder ao retângulo
+                    text_size: self.size
+                    padding: (10, 5, 10, 10)
+            BoxLayout:
+                size_hint_y: None
+                height: dp(350)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    id: condutas
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: self.parent.height  # Ajusta a altura do Label para corresponder ao retângulo
+                    width: self.parent.width - dp(130)  # Ajusta a largura do Label para corresponder ao r
+                    text_size: self.size  # Ajusta o tamanho do texto para caber dentro do retângulo
+                    valign: 'middle'  # Alinha verticalmente o texto ao centro
+                    padding: (10, 10, 5, 5)
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                Label:
+                    text: 'COMENTÁRIOS ADICIONAIS:'
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_x: None
+                    width: dp(400)
+                    height: dp(40)  # Ajusta a altura do Label para corresponder ao retângulo
+                    text_size: self.size
+                    padding: (10, 5, 10, 10)
+                
+            BoxLayout:
+                size_hint_y: None
+                height: dp(350)  # Aumenta a altura do retângulo
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x + 2, self.y + 2
+                        size: self.width - 4, self.height - 4
+                    Color:
+                        rgba: 0, 0, 0, 1
+                Label:
+                    id: comentarios
+                    text: ''
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: self.parent.height  # Ajusta a altura do Label para corresponder ao retângulo
+                    width: self.parent.width - dp(130)  # Ajusta a largura do Label para corresponder ao r
+                    text_size: self.size  # Ajusta o tamanho do texto para caber dentro do retângulo
+                    valign: 'middle'  # Alinha verticalmente o texto ao centro
+                    padding: (10, 10, 5, 5)

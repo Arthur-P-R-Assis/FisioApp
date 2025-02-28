@@ -1,0 +1,73 @@
+<InicialScreen>:
+    items_grid: items_grid
+    MDScreen:
+        md_bg_color: 0.8, 0.8, 0.8, 1  # Cor de fundo temática
+        BoxLayout:
+            orientation: 'vertical'
+            padding: "10dp"
+            spacing: "10dp"
+            size_hint: None, None
+            size: dp(500), dp(600)  # Ajuste o tamanho do BoxLayout para acomodar o botão
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            Button:
+                text: 'Sair'
+                background_color: 0, 0, 0, 0  # Configura o fundo para ser transparent
+                color: 0.2, 0.2, 0.2, 1  # Configura a cor do texto para preto
+                font_size: 15  # Ajusta o tamanho da fonte para o "X" maior
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+                canvas.before:
+                    Color:
+                        rgba: 0.3, 0.3, 0.3, 1  # Define a cor do sublinhado
+                    Line:
+                        points: self.x, self.y - 5, self.x + self.width, self.y - 5  #
+                        width: 1  # Define a largura do sublinhado
+                on_release: app.goto_login()
+
+            MDLabel:
+                text: "Lista de Pacientes"
+                halign: 'center'
+                font_style: 'H4'
+
+            ScrollView:
+                GridLayout:
+                    id: items_grid
+                    cols: 1
+                    spacing: "10dp"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    canvas.before:
+                        Color:
+                            rgba: 0.75, 0.75, 0.75, 1  # Cor cinza muito claro (RGBA)
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+            AnchorLayout:  # AnchorLayout para o botão
+                size_hint: None, None
+                width: dp(120)
+                height: dp(120)
+                anchor_x: 'center'  # Centralizando o botão horizontalmente
+                anchor_y: 'center'  # Centralizando o botão verticalmente
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # Ajuste a posição para o centro da tela
+                MDIconButton:
+                    icon: "plus"
+                    theme_text_color: "Custom"
+                    text_color: app.theme_cls.primary_color
+                    on_release: app.goto_info()
+
+                    canvas.before:
+                        Color:
+                            rgba: 0.4, 0.4, 0.4, 1  # Cor cinza claro
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [30]
+
+                    MDIcon:
+                        icon: "plus"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        theme_text_color: "Custom"
+                        text_color: 0.8, 0.8, 0.8, 1
+                        font_size: "30sp"  # Tamanho do ícone

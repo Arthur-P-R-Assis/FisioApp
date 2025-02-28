@@ -1,0 +1,60 @@
+<InfoScreen>:
+    MDScreen:
+        id: info_screen
+        md_bg_color: 0.6, 0.6, 0.6, 1
+        BoxLayout:
+            orientation: 'vertical'
+            padding: "10dp"
+            spacing: "10dp"  
+            size_hint: None, None
+            size: dp(400), dp(400)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+
+            MDTextField:
+                id: current_field
+                hint_text: ""
+                mode: "fill"
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(50)
+                padding: "10dp"
+                spacing: "10dp"
+                pos_hint: {'center_x': 0.5}
+
+                AnchorLayout:
+                    anchor_x: 'left'
+                    anchor_y: 'center'
+
+                    MDFlatButton:
+                        id: current_button
+                        text: "[u]Voltar[/u]"
+                        font_size: 15
+                        theme_text_color: "Custom"
+                        text_color: 0.2, 0.2, 0.2, 1
+                        size_hint: None, None
+                        markup: True
+                        size: dp(200), dp(50)  # Ajustamos o tamanho do botão
+                        on_release: root.go_back()
+
+                MDRaisedButton:
+                    id: next_button
+                    text: "Próximo"
+                    pos_hint: {'center_x': 0.5}
+                    size_hint: None, None
+                    size: dp(200), dp(50)
+                    on_release: root.on_next_button_press()
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: "10dp"
+            spacing: "10dp"  
+            size_hint: None, None
+            size: dp(400), dp(600)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+
+            MDLabel:
+                text: "Criar Ficha"
+                halign: 'center'
+                font_style: 'H4'

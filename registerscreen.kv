@@ -1,0 +1,80 @@
+<RegisterScreen>:
+    MDScreen:
+        id: register_screen
+        md_bg_color: 0.8, 0.8, 0.8, 1
+        BoxLayout:
+            orientation: 'vertical'
+            padding: "10dp"
+            spacing: "20dp"  
+            size_hint: None, None
+            size: dp(400), dp(600)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                spacing: '10dp'
+
+                MDTextField:
+                    id: name_field
+                    hint_text: "Nome"
+                    mode: "fill"
+
+                MDTextField:
+                    id: email_field
+                    hint_text: "Email"
+                    mode: "fill"
+
+                MDTextField:
+                    id: senha_field
+                    hint_text: "Senha"
+                    mode: "fill"
+                    password: True
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "10dp"
+                pos_hint: {'center_x': 0.5}
+
+
+                AnchorLayout:
+                    anchor_x: 'left'
+                    anchor_y: 'center'
+
+                    MDFlatButton:
+                        text: "Voltar"
+                        theme_text_color: "Custom"
+                        text_color: app.theme_cls.primary_color
+                        size_hint: None, None
+                        size: dp(200), dp(100)  # Ajustamos o tamanho do botão
+                        on_release: app.goto_login()
+
+                MDRaisedButton:
+                    id: register_button
+                    text: "Cadastrar"
+                    pos_hint: {'center_x': 0.5}
+                    size_hint: None, None
+                    size: dp(200), dp(50)
+                    on_release: root.register()
+            
+            MDLabel:
+                id: error_label
+                text: ""
+                size_hint_y: None
+                height: self.texture_size[1]
+                halign: 'center'  # Esta linha centraliza o texto horizontalmente
+                align: 'center'
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: "10dp"
+            spacing: "10dp"  
+            size_hint: None, None
+            size: dp(400), dp(600)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+
+            MDLabel:
+                text: "Cadastro"
+                halign: 'center'
+                font_style: 'H4'
